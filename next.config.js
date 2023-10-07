@@ -11,5 +11,5 @@ module.exports = {
   },
 
   // to serve static files
-  output: 'export',
+  // output: 'export',
 }
