@@ -113,7 +113,7 @@ export default function Home() {
   const handleRemove = async (id: string) => {
     setLoading(true)
     const response = await cfmServices.remove(id);
-    setSubscriptions(response)
+    await handleGetSubscriptions()
     setLoading(false)
   }
 
