@@ -92,21 +92,22 @@ export default function Home() {
   const handleConfirmPayment = async (id: string) => {
     setLoading(true)
     const response = await cfmServices.confirmPayment(id);
-    setSubscriptions(response)
+    await handleGetSubscriptions()
     setLoading(false)
   }
 
   const handleSubscription = async (values: { name: string, phone: string, email: string }) => {
     setLoading(true)
     const response = await cfmServices.subscription(values.name, values.phone, values.email);
-    setSubscriptions(response)
+    await handleGetSubscriptions()
+
     setLoading(false)
   }
 
   const handleConfirmNotPaid = async (id: string) => {
     setLoading(true)
     const response = await cfmServices.confirmNotPaid(id);
-    setSubscriptions(response)
+    await handleGetSubscriptions()
     setLoading(false)
   }
 
