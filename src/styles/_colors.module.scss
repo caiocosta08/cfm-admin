@@ -1,0 +1,12 @@
+$navbar-bg: white;
+$navbar-dark-bg: #D9D9D930;
+$navbar-text: #42425D;
+$primary-button-bg: rgba(42, 139, 242, 0.68);
+$sidebar-bg: rgba(42, 139, 242, 1);
+
+:export {
+  navbarBg: $navbar-bg;
+  navbarText: $navbar-text;
+  primaryButtonBg: $primary-button-bg;
+  sidebarBg: $sidebar-bg;
+}

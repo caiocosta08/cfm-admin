@@ -1,0 +1,11 @@
+// *** USER ***
+export const USER_UPDATE = "USER_UPDATE";
+export const USER_RESET = "USER_RESET";
+
+// *** SETTINGS ***
+export const USER_SETTINGS_UPDATE_LANGUAGE = "USER_SETTINGS_UPDATE_LANGUAGE";
+export const USER_SETTINGS_UPDATE_ROLE = "USER_SETTINGS_UPDATE_ROLE";
+
+// *** POSTS ***
+export const POSTS_UPDATE_LIST = "POSTS_UPDATE_LIST";
+export const TEST = "TEST";

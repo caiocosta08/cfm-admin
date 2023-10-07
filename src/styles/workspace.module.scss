@@ -1,0 +1,205 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+.tableHeaders{
+  font-size: bold;
+  font-family: 'Poppins', sans-serif;
+}
+.chipStatus {
+  width: 4.5rem;
+  height: 27px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  margin: auto;
+  border: solid 1px;
+  border-radius: 6px;
+}
+.alta {
+  border-color: #0DBC33;
+  color: #0DBC33;
+  background-color: rgba(0, 195, 5, 0.1);
+}
+.baja {
+  border-color: #BC0D0D;
+  color: #BC0D0D;
+  background-color: rgba(195, 0, 0, 0.1);
+}
+.media {
+  border-color: #BCAB0D;
+  color: #BCAB0D;
+  background-color: rgba(168, 195, 0, 0.1);
+}
+.medindo {
+  border-color: #7E807E;
+  color: #7E807E;
+  background-color: rgba(137, 138, 137, 0.1);
+}
+.divergenceHigh {
+  border-color: #FF0000;
+  color: #B80101;
+  background-color: #FF000080;
+  width: fit-content;
+  padding: 5px 15px;
+}
+.divergenceLow {
+  border-color: #C79808;
+  color: #926E02;
+  background-color: #FFCF3D;
+  width: fit-content;
+  padding: 5px 15px;
+}
+.divergenceMedium {
+  border-color: #DE8500;
+  color: #925700;
+  background-color: #FF9900;
+  width: fit-content;
+  padding: 5px 15px;
+}
+.divergenceZero {
+  border-color: #575757;
+  color: #231F20;
+  background-color: #D4D4D4;
+  width: fit-content;
+  padding: 5px 15px;
+}
+.statusPublished {
+  border-color: #0DBC33;
+  color: #0A6B53;
+  background-color: #BADDC1;
+}
+.statusReviewed {
+  border-color: #B0A600;
+  color: #B08E26;
+  background-color: #FFF101;
+}
+.statusCreated {
+  border-color: #575757;
+  color: #231F20;
+  background-color: #D4D4D4
+}
+.cardVisibilityWa {
+  border-color: #0DBC33;
+  color: #0DBC33;
+  background-color: #0DBC3330;
+  margin: 3px;
+  margin-top: 0px;
+}
+.cardVisibilityCopilot {
+  border-color: #FF0000;
+  color: #FF0000;
+  background-color: #FF000030;
+  margin: 3px;
+  margin-top: 0px;
+}
+.cardVisibilityAutopilot {
+  border-color: #9747FF;
+  color: #9747FF;
+  background-color: #9747FF30;
+  margin: 3px;
+  margin-top: 0px;
+}
+.adminChip {
+ background-color: #85B6FF;
+ color: #0B1CD5;
+ font-size: 10px;
+ border-radius: 50%;
+ width: 24px;
+ height: 24px;
+ display: flex;
+ justify-content: center;
+ align-items: center; 
+ margin: auto;
+ font-weight: bold;
+}
+.avatarChip {
+  border-radius: 50%;
+  border: 0.5px solid #0687FE;
+  width: 30px;
+  height: 30px;
+  margin-right: 5px
+}
+.avatarCard {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: left;
+  align-items: center;
+}
+.avatarTitle{
+  font-size: 10px;
+}
+.viewsCard {
+  border-radius: 2px;
+  border: 1px solid #FF0000;
+  color: #FF0000;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.newChip {
+  font-size: 10px;
+  background-color: #8BFFA4;
+  color: #15803D;
+  font-weight: lighter;
+  display: inline-block;
+  border-radius: 16px;
+  padding: 3px 10px;
+}
+.chipVersion {
+  background-color: #FF2E3B;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  color: white;
+  margin: auto;
+}
+.categoryChip {
+  width: 4.5rem;
+  // height: 27px;
+  padding: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.7rem;
+  margin: auto;
+  border: solid 1px;
+  border-radius: 6px;
+  background-color: #0687FE;
+  color: #FFFFFF;
+  margin: 3px;
+  margin-top: 0px;
+  font-size: 9px;
+  min-width: 74px;
+  // min-height: 40px;
+  text-align: center;
+}
+.statusOk {
+  color: #0DBC33;
+}
+.statusError {
+  color: #BC0D0D;
+}
+.statusUpload {
+  color: #FFD600;
+}
+.textTime {
+  color: #64748B;
+  font-size: 12px;
+}
+.paginationSelector {
+  margin-top: 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 14px;
+  font-family: sans-serif;
+  font-weight: 200;
+}
