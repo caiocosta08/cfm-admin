@@ -13,7 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import Image from 'next/image';
 import colors from '../../styles/_colors.module.scss';
 import MoneyBox from '@mui/icons-material/LocalMall';
-import { AccountBalance, History, Home, Settings } from '@mui/icons-material';
+import { AccountBalance, History, Home, Person, Settings } from '@mui/icons-material';
 
 interface Route {
   text: string;
@@ -26,6 +26,7 @@ export default function Sidebar() {
 
   const routes: Route[] = [
     { text: 'Home', url: '/home', icon: 'home' },
+    { text: 'Tannus', url: '/tannus', icon: 'tannus' },
   ];
 
   const LinkContainer = (route: Route) => (
@@ -38,6 +39,7 @@ export default function Sidebar() {
           }}
         >
           { route.icon === 'home' && <Home />}
+          { route.icon === 'tannus' && <Person />}
         </ListItemIcon>
       </Tooltip>
     </Link>
