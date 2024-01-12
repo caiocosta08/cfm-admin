@@ -26,7 +26,7 @@ export default function Sidebar() {
 
   const routes: Route[] = [
     { text: 'Home', url: '/home', icon: 'home' },
-    { text: 'Tannus', url: '/tannus', icon: 'tannus' },
+    // { text: 'Tannus', url: '/tannus', icon: 'tannus' },
   ];
 
   const LinkContainer = (route: Route) => (
