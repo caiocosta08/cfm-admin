@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Layout from '../layouts/layout';
-import AddInscritoModal from '../components/AddInscritoModal';
+import AddWorkspaceModal from '../components/AddWorkspaceModal';
 import SearchWorkspace from '../components/SearchWorkspace';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/material/Box';
 import Alert from '@mui/material/Alert';
-import cfmServices from '../services/cfmApi';
+import cfmServices from '../services/cfm';
 import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 import ModalLoading from '../components/ModalLoading';
 
@@ -25,100 +25,53 @@ export default function Home() {
   const [subscriptions, setSubscriptions] = useState<any[]>([]);
   const [rows, setRows] = useState<any[]>([]);
   const columns: GridColDef[] = [
-    // { field: '_id', headerName: 'ID', width: 10 },
+    { field: '_id', headerName: 'ID', width: 90 },
     {
       field: 'name',
       headerName: 'Nome',
-      width: 400,
-      editable: true,
-    },
-    {
-      field: 'email',
-      headerName: 'E-mail',
       width: 300,
       editable: true,
     },
     {
       field: 'phone',
       headerName: 'Telefone',
-      width: 160,
+      width: 150,
       editable: true,
     },
     {
-      field: 'data_de_aniversario',
-      headerName: 'Aniversário',
+      field: 'is_paid',
+      headerName: 'Pagou?',
+      type: 'boolean',
       width: 110,
       editable: true,
     },
     {
-      field: 'gostaria_whatsapp',
-      headerName: 'Quer ir pro whatsapp?',
-      width: 140,
-      editable: true,
+      field: '-pay',
+      headerName: 'Confirmar Pagamento',
+      sortable: false,
+      width: 180,
+      renderCell: (params: GridRenderCellParams) =>
+        // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        <Button color='success' variant="contained" onClick={() => handleConfirmPayment(params.id + "")}>PAGO</Button>,
     },
     {
-      field: 'forma_de_pagamento',
-      headerName: 'Forma de Pagamento',
-      width: 140,
-      editable: true,
+      field: '-',
+      headerName: 'Negar Pagamento',
+      sortable: false,
+      width: 180,
+      renderCell: (params: GridRenderCellParams) =>
+        // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        <Button color='warning' variant="contained" onClick={() => handleConfirmNotPaid(params.id + "")}>NÃO PAGO</Button>,
     },
     {
-      field: 'valor',
-      headerName: 'Valor',
-      width: 110,
-      editable: true,
+      field: 'remove',
+      headerName: 'Excluir',
+      sortable: false,
+      width: 180,
+      renderCell: (params: GridRenderCellParams) =>
+        // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        <Button color='error' variant="contained" onClick={() => handleRemove(params.id + "")}>EXCLUIR</Button>,
     },
-    {
-      field: 'deseja_ser_lembrado',
-      headerName: 'Deseja ser lembrado?',
-      width: 140,
-      editable: true,
-    },
-    {
-      field: 'data_da_doacao',
-      headerName: 'Data',
-      width: 110,
-      editable: true,
-    },
-    {
-      field: 'participa_da_cfm',
-      headerName: 'Participa da CFM?',
-      width: 250,
-      editable: true,
-    },
-    {
-      field: 'obs',
-      headerName: 'obs',
-      width: 300,
-      editable: true,
-    },
-    // {
-    //   field: '-pay',
-    //   headerName: 'Confirmar Pagamento',
-    //   sortable: false,
-    //   width: 180,
-    //   renderCell: (params: GridRenderCellParams) =>
-    //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    //     <Button color='success' variant="contained" onClick={() => handleConfirmPayment(params.id + "")}>PAGO</Button>,
-    // },
-    // {
-    //   field: '-',
-    //   headerName: 'Negar Pagamento',
-    //   sortable: false,
-    //   width: 180,
-    //   renderCell: (params: GridRenderCellParams) =>
-    //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    //     <Button color='warning' variant="contained" onClick={() => handleConfirmNotPaid(params.id + "")}>NÃO PAGO</Button>,
-    // },
-    // {
-    //   field: 'remove',
-    //   headerName: 'Excluir',
-    //   sortable: false,
-    //   width: 180,
-    //   renderCell: (params: GridRenderCellParams) =>
-    //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    //     <Button color='error' variant="contained" onClick={() => handleRemove(params.id + "")}>EXCLUIR</Button>,
-    // },
     // {
     //   field: 'fullName',
     //   headerName: 'Full name',
@@ -133,35 +86,34 @@ export default function Home() {
   const handleConfirmPayment = async (id: string) => {
     setLoading(true)
     const response = await cfmServices.confirmPayment(id);
-    await handleGetSubscriptions()
+    setSubscriptions(response)
     setLoading(false)
   }
 
-  const handleSubscription = async (values: { name: string, phone: string, email: string }) => {
+  const handleSubscription = async (values: { name: string, phone: string }) => {
     setLoading(true)
-    const response = await cfmServices.subscription(values.name, values.phone, values.email);
-    await handleGetSubscriptions()
-
+    const response = await cfmServices.subscription(values.name, values.phone);
+    setSubscriptions(response)
     setLoading(false)
   }
 
   const handleConfirmNotPaid = async (id: string) => {
     setLoading(true)
     const response = await cfmServices.confirmNotPaid(id);
-    await handleGetSubscriptions()
+    setSubscriptions(response)
     setLoading(false)
   }
 
   const handleRemove = async (id: string) => {
     setLoading(true)
     const response = await cfmServices.remove(id);
-    await handleGetSubscriptions()
+    setSubscriptions(response)
     setLoading(false)
   }
 
   const handleGetSubscriptions = async () => {
     setLoading(true)
-    const response = await cfmServices.getBenfeitores();
+    const response = await cfmServices.getInscricoes();
     setSubscriptions(response)
     setLoading(false)
   }
@@ -194,13 +146,14 @@ export default function Home() {
       <Grid item xs={12} sx={{ mt: 3 }}>
         <Stack direction='row' spacing={3}>
           <SearchWorkspace search={handleSearch} />
-          {/* <AddInscritoModal createWorkspace={handleSubscription} /> */}
+          <AddWorkspaceModal createWorkspace={handleSubscription} />
           {subscriptions?.length > 0 &&
             <Box>
               <Typography fontSize={14}>Total de inscritos: {subscriptions?.length}</Typography>
+              <Typography fontSize={14}>Total de pagos: {subscriptions?.filter(s => s.is_paid).length}</Typography>
             </Box>}
         </Stack>
-        <Typography style={{ marginTop: 10 }} fontSize={20}>Lista de Benfeitores</Typography>
+        <Typography style={{ marginTop: 10 }} fontSize={20}>Lista de inscritos no Evento Quem como Deus</Typography>
         <Grid container spacing={12} sx={{ mt: 3, paddingLeft: 10 }}>
 
           <Box sx={{ height: '100%', width: '100%' }}>

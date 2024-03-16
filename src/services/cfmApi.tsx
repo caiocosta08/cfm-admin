@@ -1,5 +1,10 @@
 import axios from 'axios';
 const cfmServices = {
+  // https://cfm-api.acutistecnologia.com/benfeitor
+  getBenfeitores: async (): Promise<any> => {
+    return (await axios
+      .get('https://cfm-api.acutistecnologia.com/benfeitor')).data
+  },
   getInscricoes: async (): Promise<any> => {
     return (await axios
       .get('http://cfm-api.acutistecnologia.com/cfm')).data
