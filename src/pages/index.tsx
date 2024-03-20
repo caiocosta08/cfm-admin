@@ -110,15 +110,15 @@ export default function Home() {
     //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
     //     <Button color='warning' variant="contained" onClick={() => handleConfirmNotPaid(params.id + "")}>NÃO PAGO</Button>,
     // },
-    // {
-    //   field: 'remove',
-    //   headerName: 'Excluir',
-    //   sortable: false,
-    //   width: 180,
-    //   renderCell: (params: GridRenderCellParams) =>
-    //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    //     <Button color='error' variant="contained" onClick={() => handleRemove(params.id + "")}>EXCLUIR</Button>,
-    // },
+    {
+      field: 'remove',
+      headerName: 'Excluir',
+      sortable: false,
+      width: 180,
+      renderCell: (params: GridRenderCellParams) =>
+        // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        <Button color='error' variant="contained" onClick={() => handleRemove(params.id + "")}>EXCLUIR</Button>,
+    },
     // {
     //   field: 'fullName',
     //   headerName: 'Full name',
