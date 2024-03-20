@@ -19,7 +19,7 @@ const cfmServices = {
   },
   remove: async (id: string): Promise<any> => {
     return (await axios
-      .delete('http://cfm-api.acutistecnologia.com/cfm/' + id)).data
+      .delete('https://cfm-api.acutistecnologia.com/benfeitor/' + id)).data
   },
   subscription: async (name: string, phone: string, email: string): Promise<any> => {
     return (await axios
