@@ -7,7 +7,7 @@ const cfmServices = {
   },
   getInscricoes: async (): Promise<any> => {
     return (await axios
-      .get('http://cfm-api.acutistecnologia.com/cfm')).data
+      .get('https://cfm-api.acutistecnologia.com/cfm')).data
   },
   confirmPayment: async (id: string): Promise<any> => {
     return (await axios
@@ -20,6 +20,10 @@ const cfmServices = {
   remove: async (id: string): Promise<any> => {
     return (await axios
       .delete('https://cfm-api.acutistecnologia.com/benfeitor/' + id)).data
+  },
+  removeCfm: async (id: string): Promise<any> => {
+    return (await axios
+      .delete('https://cfm-api.acutistecnologia.com/cfm/' + id)).data
   },
   subscription: async (name: string, phone: string, email: string): Promise<any> => {
     return (await axios
