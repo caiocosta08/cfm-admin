@@ -59,24 +59,24 @@ export default function Home() {
           `${params.row.is_paid === true ? "sim" : "não"}`,
       
     },
-    // {
-    //   field: '-pay',
-    //   headerName: 'Confirmar Pagamento',
-    //   sortable: false,
-    //   width: 180,
-    //   renderCell: (params: GridRenderCellParams) =>
-    //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    //     <Button color='success' variant="contained" onClick={() => handleConfirmPayment(params.id + "")}>PAGO</Button>,
-    // },
-    // {
-    //   field: '-',
-    //   headerName: 'Negar Pagamento',
-    //   sortable: false,
-    //   width: 180,
-    //   renderCell: (params: GridRenderCellParams) =>
-    //     // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
-    //     <Button color='warning' variant="contained" onClick={() => handleConfirmNotPaid(params.id + "")}>NÃO PAGO</Button>,
-    // },
+    {
+      field: '-pay',
+      headerName: 'Confirmar Pagamento',
+      sortable: false,
+      width: 180,
+      renderCell: (params: GridRenderCellParams) =>
+        // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        <Button color='success' variant="contained" onClick={() => handleConfirmPayment(params.id + "")}>PAGO</Button>,
+    },
+    {
+      field: '-',
+      headerName: 'Negar Pagamento',
+      sortable: false,
+      width: 180,
+      renderCell: (params: GridRenderCellParams) =>
+        // `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        <Button color='warning' variant="contained" onClick={() => handleConfirmNotPaid(params.id + "")}>NÃO PAGO</Button>,
+    },
     {
       field: 'remove',
       headerName: 'Excluir',
